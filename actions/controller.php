@@ -4,7 +4,8 @@
 	 * 
 	 */
 	function saveGuest() {
-		$conn = pg_connect("host=localhost port=5432 dbname=heleninha_db user=postgres password=root");
+		$conn = pg_connect("host=dpg-d1541vbe5dus73980sh0-a.ohio-postgres.render.com port=5432 dbname=heleninha_db user=heleninha_db_user password=OExfCg0LVLKE6kymhYJlU9xXRLF6I8ke");
+		#$conn = pg_connect("host=localhost port=5432 dbname=heleninha_db user=postgres password=root");
 		if (!$conn) {
 			die("Erro na conexão: " . pg_last_error());
 		}
@@ -31,7 +32,8 @@
 	 * 
 	 */
 	function loadPresentList() {
-		$conn = pg_connect("host=localhost port=5432 dbname=heleninha_db user=postgres password=root");
+		#$conn = pg_connect("host=localhost port=5432 dbname=heleninha_db user=postgres password=root");
+		$conn = pg_connect("host=dpg-d1541vbe5dus73980sh0-a.ohio-postgres.render.com port=5432 dbname=heleninha_db user=heleninha_db_user password=OExfCg0LVLKE6kymhYJlU9xXRLF6I8ke");
 		if (!$conn) {
 			die("Erro na conexão: " . pg_last_error());
 		}
