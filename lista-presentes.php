@@ -13,9 +13,9 @@
   <canvas id="fireworksCanvas"></canvas>  
   <div class="max-w-lg mx-auto bg-white p-3 rounded-lg shadow-lg text-center">
     <div style="text-align: left;">
-        <a href="index.html" class="icon" title="Home"><i class="fas fa-home"></i></a>
+        <a href="index.php" class="icon" title="Home"><i class="fas fa-home"></i></a>
         &nbsp;
-        <a href="lista-presentes.html" class="icon icon-selected" title="Lista de Presentes"><i class="fas fa-list"></i></a>
+        <a href="lista-presentes.php" class="icon icon-selected" title="Lista de Presentes"><i class="fas fa-list"></i></a>
     </div>
     <img src="assets/img/HEAD-HELENA.png" alt="1º Aniversário da Heleninha" class="mx-auto mb-6 rounded-lg" />
     <h1 class="text-4xl font-bold text-pink-600 mb-4" style="font-size: 27px !important;">1º Aniversário da Heleninha!</h1>
@@ -43,7 +43,7 @@
                 <?php foreach ($presents as $present): ?>
                     <tr>
                         <td width="70"><img src="assets/img-produto/<?php echo htmlspecialchars($present['image']);?>" class="table-presents-img"/></td>
-                        <td align="left"><a href="<?php echo htmlspecialchars($present['link']); ?>" target="_blank"><?php echo htmlspecialchars($present['name']); ?></a></td>
+                        <td align="left"><a style="text-decoration:underline" href="<?php echo htmlspecialchars($present['link']); ?>" target="_blank"><?php echo htmlspecialchars($present['name']); ?></a></td>
                         <td width="80"><a href="#" class="inline-block bg-btn-gray text-white font-semibold py-2 px-4 rounded hover:bg-pink-600 transition">COMPREI</a></td>
                     </tr>
                 <?php endforeach; ?>
