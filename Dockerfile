@@ -1,24 +1,25 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.3-apache
 
-# Instalar dependências do sistema para PostgreSQL
-RUN apk update && apk add --no-cache \
-    postgresql-dev \
+# Install system dependencies for PostgreSQL
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
     && docker-php-ext-install pgsql
 
-# Copiar arquivos do projeto
+# Enable mod_rewrite
+RUN a2enmod rewrite
+
+# Copy custom Apache configuration
+COPY servername.conf /etc/apache2/conf-available/servername.conf
+RUN a2enconf servername
+
+# Allow .htaccess overrides
+RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
+# Copy project files
 COPY . /var/www/html/
 
-# Instalar NGINX
-RUN apk add --no-cache nginx
-
-# Configurar NGINX
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Permissões
+# Permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Expor porta 80 para NGINX
+# Expose port 80 for Apache
 EXPOSE 80
-
-# Iniciar NGINX e PHP-FPM
-CMD ["sh", "-c", "nginx && php-fpm"]
