@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: php-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    numInstances: 1
+    envVars:
+      - key: PORT
+        value: 80
+    healthCheckPath: /index.php
